@@ -1,0 +1,48 @@
+{
+  "name": "doly",
+  "version": "0.0.0",
+  "description": "doly ui components",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel components -d lib",
+    "start": "parcel examples/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doly-dev/doly.git"
+  },
+  "keywords": [
+    "doly",
+    "doly-ui",
+    "react",
+    "react-component",
+    "component",
+    "components",
+    "ui",
+    "frontend"
+  ],
+  "author": "caijf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/doly-dev/doly/issues"
+  },
+  "homepage": "https://github.com/doly-dev/doly#readme",
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "styled-components": "^3.3.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "parcel-bundler": "^1.8.1"
+  }
+}
