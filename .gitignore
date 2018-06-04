@@ -7,4 +7,5 @@ output
 dist
 build
 node_modules
+lib
 
