@@ -13,7 +13,7 @@ const alignMap = {
     bottom: 'flex-end'
 }
 
-const StyledRow = styled.div `
+const StyledFlex = styled.div `
     display: flex;
     flex-flow: row wrap;
     box-sizing: border-box;
@@ -35,7 +35,7 @@ const StyledRow = styled.div `
     }}
 `;
 
-const StyledCol = styled.div `
+const StyledFlexItem = styled.div `
     box-sizing: border-box;
 
     ${props=>{
@@ -80,7 +80,7 @@ const StyledCol = styled.div `
 const GutterContext = React.createContext(0);
 const {Provider, Consumer} = GutterContext;
 
-export class Col extends React.Component{
+export class FlexItem extends React.Component{
     static propTypes = {
         order: PropTypes.number,
         span: PropTypes.oneOfType([
@@ -93,13 +93,13 @@ export class Col extends React.Component{
     render(){
         return (
             <Consumer>
-                {gutter=> <StyledCol gutter={gutter} {...this.props} />}
+                {gutter=> <StyledFlexItem gutter={gutter} {...this.props} />}
             </Consumer>
         )
     }
 }
 
-export class Row extends React.Component{
+export class Flex extends React.Component{
     static propTypes = {
         gutter: PropTypes.number,
         justify: PropTypes.oneOf(['start', 'center', 'end', 'space-between', 'space-around']),
@@ -111,7 +111,7 @@ export class Row extends React.Component{
 
         return(
             <Provider value={gutter || 0}>
-                <StyledRow {...rest} />
+                <StyledFlex {...rest} />
             </Provider>
         )
     }
