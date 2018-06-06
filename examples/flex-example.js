@@ -95,7 +95,7 @@ class PlaceHolder extends React.Component{
 }
 
 
-export default class GridExample extends React.Component {
+export default class Example extends React.Component {
     render(){
         return (
             <div>
