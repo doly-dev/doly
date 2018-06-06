@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import styled, {css} from 'styled-components'
-
+import TouchFeedback from 'rmc-feedback';
 import {Flex, FlexItem} from '../flex'
 
 import createTag from '../utils/createTag'
 
 const divTag = createTag({
     tag: 'div',
-    propsToOmit: ['data', 'renderItem', 'columnNum', 'activeClassName', 'hasLine', 'square', 'itemStyle']
+    propsToOmit: ['data','hasLine','renderItem','square','columnNum','activeStyle','activeClassName','itemStyle']
 })
 
 const squareCol = css`
@@ -25,98 +25,83 @@ const squareContent = css`
     transform: translateY(-50%);
 `;
 
-const hairlineTop = ()=>{
-    return `
-        &:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: auto;
-            right: auto;
-            height: 1px;
-            width: 100%;
-            background-color: #ddd;
-            display: block;
-            z-index: 15;
-            transform-origin: 50% 0%;
-            transform: scaleY(0.5);
-        }
-    `
-}
+const hairlineTop = css`
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: auto;
+        right: auto;
+        height: 1px;
+        width: 100%;
+        background-color: #ddd;
+        display: block;
+        z-index: 15;
+        transform-origin: 50% 0%;
+        transform: scaleY(0.5);
+    }
+`
 
-const hairlineRight = ()=>{
-    return `
-        &:after {
-            content: '';
-            position: absolute;
-            left: auto;
-            top: 0;
-            bottom: auto;
-            right: 0;
-            height: 100%;
-            width: 1px;
-            background-color: #ddd;
-            display: block;
-            z-index: 15;
-            transform-origin: 100% 50%;
-            transform: scaleX(0.5);
-        }
-    `
-}
+const hairlineRight = css`
+    &:after {
+        content: '';
+        position: absolute;
+        left: auto;
+        top: 0;
+        bottom: auto;
+        right: 0;
+        height: 100%;
+        width: 1px;
+        background-color: #ddd;
+        display: block;
+        z-index: 15;
+        transform-origin: 100% 50%;
+        transform: scaleX(0.5);
+    }
+`
 
-const hairlineBottom = ()=>{
-    return `
-        &:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: auto;
-            bottom: 0;
-            right: auto;
-            height: 1px;
-            width: 100%;
-            background-color: #ddd;
-            display: block;
-            z-index: 15;
-            transform-origin: 50% 100%;
-            transform: scaleY(0.5);
-        }
-    `
-}
+const hairlineBottom = css`
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: auto;
+        bottom: 0;
+        right: auto;
+        height: 1px;
+        width: 100%;
+        background-color: #ddd;
+        display: block;
+        z-index: 15;
+        transform-origin: 50% 100%;
+        transform: scaleY(0.5);
+    }
+`
 
-const hairlineLeft = ()=>{
-    return `
-        &:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: auto;
-            right: auto;
-            height: 100%;
-            width: 1px;
-            background-color: #ddd;
-            display: block;
-            z-index: 15;
-            transform-origin: 0 50%;
-            transform: scaleX(0.5);
-        }
-    `
-}
+const hairlineLeft = css`
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: auto;
+        right: auto;
+        height: 100%;
+        width: 1px;
+        background-color: #ddd;
+        display: block;
+        z-index: 15;
+        transform-origin: 0 50%;
+        transform: scaleX(0.5);
+    }
+`
 
 const StyledGrid = styled(divTag) `
     position: relative;
     background: #fff;
 
-    ${props=>{
-        let _st = '';
-        if(props.hasLine){
-            _st += hairlineRight();
-            _st += hairlineTop();
-        }
-        return _st;
-    }}
+    ${props=>props.hasLine ? hairlineRight + hairlineTop : ''}
 `;
 const StyledRow = styled(divTag) `
     box-sizing: border-box;
@@ -124,28 +109,16 @@ const StyledRow = styled(divTag) `
     width: 100%;
     position: relative;
 
-    ${props=>{
-        let _st = '';
-        if(props.hasLine){
-            _st += hairlineLeft();
-            _st += hairlineBottom();
-        }
-        return _st;
-    }}
+    ${props=>props.hasLine ? hairlineLeft + hairlineBottom : ''}
 `;
 const StyledCol = styled(divTag) `
     box-sizing: border-box;
     position: relative;
+    width: ${props=>(100/props.columnNum).toFixed(2)}%;
 
     ${props=>props.square ? squareCol : ''}
 
-    ${props=>{
-        let _st = '';
-        if(props=>props.hasLine){
-            _st += hairlineRight();
-        }
-        return _st;
-    }}
+    ${props=>props.hasLine ? hairlineRight : ''}
 `;
 
 const StyledContent = styled(divTag) `
@@ -158,10 +131,27 @@ const StyledContent = styled(divTag) `
     ${props=>props.square ? squareContent : ''}
 `;
 
-const StyledIcon = styled.div`
-    
+const StyledContentInner = styled(divTag) `
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 `;
-const StyledText = styled.div``;
+
+const StyledIcon = styled(divTag)`
+    img{
+        max-width: 100%;
+        width: 28% !important;
+    }
+`;
+const StyledText = styled(divTag)`
+    margin-top: 9px;
+    color: #000;
+    text-align: center;
+    
+    font-size: ${props=>props.columnNum <= 3 ? '16px' : '12px'};
+`;
 
 const noop = ()=>{};
 
@@ -176,9 +166,10 @@ export default class Grid extends React.Component{
         super(props);
 
         this.id = getUnqueId();
+        this.columnNum = props.columnNum;
     }
     static propTypes = {
-        data: PropTypes.array,
+        data: PropTypes.array.isRequired,
         onClick: PropTypes.func,
         hasLine: PropTypes.bool,
         renderItem: PropTypes.func,
@@ -195,13 +186,30 @@ export default class Grid extends React.Component{
         hasLine: true,
         square: true,
         columnNum: 4,
-        // activeStyle: {},
+        activeStyle: {},
         activeClassName: '',
         itemStyle: {}
     }
 
-    renderItem(item){
-        
+    renderItem(item, index){
+        const {renderItem} = this.props;
+
+        if(renderItem){
+            return renderItem(item, index);
+        }else{
+            return (
+                <StyledContentInner>
+                    <StyledIcon>
+                        {
+                            React.isValidElement(item.icon) ? (item.icon) : <img src={item.icon} />
+                        }
+                    </StyledIcon>
+                    <StyledText columnNum={this.columnNum}>
+                        {item.text}
+                    </StyledText>
+                </StyledContentInner>
+            )
+        }
     }
 
     /**
@@ -226,35 +234,64 @@ export default class Grid extends React.Component{
     }
 
     render(){
-        let {data, square, columnNum, renderItem, activeClassName, hasLine} = this.props;
+        const {
+            data,
+            onClick,
+            hasLine,
+            renderItem,
+            square,
+            columnNum,
+            activeStyle,
+            activeClassName,
+            itemStyle
+        } = this.props;
 
         if(data.length <= 0){
             return null;
         }
 
         if(columnNum < 1){
-            columnNum = 4;
+            this.columnNum = 4;
         }
 
-        const dataArr = this.processData(columnNum);
+        const dataArr = this.processData(this.columnNum);
+        
+        let defaultActiveStyle = {
+            background: '#ddd'
+        };
+
+        let _activeStyle = activeStyle;
+
+        if(activeStyle !== false){
+            _activeStyle = {...defaultActiveStyle, ...activeStyle};
+        }
 
         return(
-            <StyledGrid {...this.props}>
+            <StyledGrid hasLine={hasLine}>
                 {
                     dataArr.map((rowItem, rowIndex)=>{
                         return (
-                            <StyledRow key={`${this.id + rowIndex}`} {...this.props}>
+                            <StyledRow key={`${this.id + rowIndex}`} hasLine={hasLine}>
                                 {
                                     rowItem.map((colItem, colIndex)=>{
                                         return (
-                                            <StyledCol key={`${this.id + rowIndex + colIndex}`} style={{
-                                                width: (100/columnNum).toFixed(2) + '%'
-                                            }} {...this.props}>
-                                                <StyledContent {...this.props}>
-                                                    {colItem.icon}
-                                                    {colItem.text}
-                                                </StyledContent>
-                                            </StyledCol>
+                                            <TouchFeedback 
+                                                key={`${this.id + rowIndex + colIndex}`} 
+                                                activeClassName={activeClassName}
+                                                activeStyle={_activeStyle}
+                                            >
+                                                <StyledCol
+                                                    style={itemStyle}
+                                                    square={square}
+                                                    hasLine={hasLine}
+                                                    columnNum={columnNum}
+                                                    onClick={()=>{onClick && onClick(colItem, rowIndex*this.columnNum+colIndex)}}
+                                                >
+                                                    <StyledContent square={square}>
+                                                        {this.renderItem(colItem, rowIndex*this.columnNum+colIndex)}
+                                                    </StyledContent>
+                                                </StyledCol>
+                                            </TouchFeedback>
                                         )
                                     })
                                 }
