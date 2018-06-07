@@ -114,6 +114,7 @@ const StyledRow = styled(divTag) `
 const StyledCol = styled(divTag) `
     box-sizing: border-box;
     position: relative;
+    overflow: hidden;
     width: ${props=>(100/props.columnNum).toFixed(2)}%;
 
     ${props=>props.square ? squareCol : ''}
@@ -257,7 +258,7 @@ export default class Grid extends React.Component{
         const dataArr = this.processData(this.columnNum);
         
         let defaultActiveStyle = {
-            background: '#ddd'
+            backgroundColor: '#ddd'
         };
 
         let _activeStyle = activeStyle;
@@ -279,13 +280,13 @@ export default class Grid extends React.Component{
                                                 key={`${this.id + rowIndex + colIndex}`} 
                                                 activeClassName={activeClassName}
                                                 activeStyle={_activeStyle}
+                                                onClick={()=>{onClick && onClick(colItem, rowIndex*this.columnNum+colIndex)}}
                                             >
                                                 <StyledCol
                                                     style={itemStyle}
                                                     square={square}
                                                     hasLine={hasLine}
-                                                    columnNum={columnNum}
-                                                    onClick={()=>{onClick && onClick(colItem, rowIndex*this.columnNum+colIndex)}}
+                                                    columnNum={this.columnNum}
                                                 >
                                                     <StyledContent square={square}>
                                                         {this.renderItem(colItem, rowIndex*this.columnNum+colIndex)}

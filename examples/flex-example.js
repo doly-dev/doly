@@ -307,16 +307,16 @@ export default class Example extends React.Component {
                 <StyledGridDemo>
                     <Flex className="row-demo row-demo-2">
                         <FlexItem order={4}>
-                            <PlaceHolder>order-4 col-1</PlaceHolder>
+                            <PlaceHolder>order-4</PlaceHolder>
                         </FlexItem>
                         <FlexItem order={3}>
-                            <PlaceHolder>order-3 col-2</PlaceHolder>
+                            <PlaceHolder>order-3</PlaceHolder>
                         </FlexItem>
                         <FlexItem order={2}>
-                            <PlaceHolder>order-2 col-3</PlaceHolder>
+                            <PlaceHolder>order-2</PlaceHolder>
                         </FlexItem>
                         <FlexItem order={1}>
-                            <PlaceHolder>order-1 col-4</PlaceHolder>
+                            <PlaceHolder>order-1</PlaceHolder>
                         </FlexItem>
                     </Flex>
                 </StyledGridDemo>

@@ -134,7 +134,7 @@ export default class Example extends React.Component {
                             <tr>
                                 <td>data</td>
                                 <td>传入的菜单数据</td>
-                                <td>Array (icon, text)></td>
+                                <td>Array (icon, text)</td>
                                 <td>[]</td>
                             </tr>
                             <tr>
