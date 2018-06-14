@@ -101,7 +101,7 @@ export default class Example extends React.Component {
             <div>
                 <h2>Flex</h2>
                 <h3>基础删格</h3>
-                <blockquote>FlexItem组件支持 span 设置宽度，仅支持百分比和px。</blockquote>
+                <blockquote>FlexItem组件span 占用剩余空间比例。width 占用大小。同时有width和span的情况下，仅width有效</blockquote>
                 <StyledGridDemo>
                     <Flex className="row-demo row-demo-1" gutter={10}>
                         <FlexItem>
@@ -110,60 +110,97 @@ export default class Example extends React.Component {
                     </Flex>
                     <Flex className="row-demo row-demo-1">
                         <FlexItem>
-                            <PlaceHolder>50%</PlaceHolder>
+                            <PlaceHolder>1/2</PlaceHolder>
                         </FlexItem>
                         <FlexItem>
-                            <PlaceHolder>50%</PlaceHolder>
+                            <PlaceHolder>1/2</PlaceHolder>
                         </FlexItem>
                     </Flex>
                     <Flex className="row-demo row-demo-1">
-                        <FlexItem span="66.66%">
-                            <PlaceHolder>66.66%</PlaceHolder>
+                        <FlexItem span={2}>
+                            <PlaceHolder>2/3</PlaceHolder>
                         </FlexItem>
-                        <FlexItem>
-                            <PlaceHolder>33.33%</PlaceHolder>
-                        </FlexItem>
-                    </Flex>
-                    <Flex className="row-demo row-demo-1">
-                        <FlexItem>
-                            <PlaceHolder>33.33%</PlaceHolder>
-                        </FlexItem>
-                        <FlexItem>
-                            <PlaceHolder>33.33%</PlaceHolder>
-                        </FlexItem>
-                        <FlexItem>
-                            <PlaceHolder>33.33%</PlaceHolder>
+                        <FlexItem span={1}>
+                            <PlaceHolder>1/3</PlaceHolder>
                         </FlexItem>
                     </Flex>
                     <Flex className="row-demo row-demo-1">
                         <FlexItem>
-                            <PlaceHolder>25%</PlaceHolder>
+                            <PlaceHolder>1/4</PlaceHolder>
                         </FlexItem>
                         <FlexItem>
-                            <PlaceHolder>25%</PlaceHolder>
+                            <PlaceHolder>1/4</PlaceHolder>
                         </FlexItem>
-                        <FlexItem>
-                            <PlaceHolder>25%</PlaceHolder>
-                        </FlexItem>
-                        <FlexItem>
-                            <PlaceHolder>25%</PlaceHolder>
+                        <FlexItem span={2}>
+                            <PlaceHolder>2/4</PlaceHolder>
                         </FlexItem>
                     </Flex>
                     <Flex className="row-demo row-demo-1">
                         <FlexItem>
-                            <PlaceHolder>20%</PlaceHolder>
+                            <PlaceHolder>1/12</PlaceHolder>
                         </FlexItem>
                         <FlexItem>
-                            <PlaceHolder>20%</PlaceHolder>
+                            <PlaceHolder>1/12</PlaceHolder>
                         </FlexItem>
                         <FlexItem>
-                            <PlaceHolder>20%</PlaceHolder>
+                            <PlaceHolder>1/12</PlaceHolder>
                         </FlexItem>
                         <FlexItem>
-                            <PlaceHolder>20%</PlaceHolder>
+                            <PlaceHolder>1/12</PlaceHolder>
                         </FlexItem>
                         <FlexItem>
-                            <PlaceHolder>20%</PlaceHolder>
+                            <PlaceHolder>1/12</PlaceHolder>
+                        </FlexItem>
+                        <FlexItem>
+                            <PlaceHolder>1/12</PlaceHolder>
+                        </FlexItem>
+                        <FlexItem>
+                            <PlaceHolder>1/12</PlaceHolder>
+                        </FlexItem>
+                        <FlexItem>
+                            <PlaceHolder>1/12</PlaceHolder>
+                        </FlexItem>
+                        <FlexItem>
+                            <PlaceHolder>1/12</PlaceHolder>
+                        </FlexItem>
+                        <FlexItem>
+                            <PlaceHolder>1/12</PlaceHolder>
+                        </FlexItem>
+                        <FlexItem>
+                            <PlaceHolder>1/12</PlaceHolder>
+                        </FlexItem>
+                        <FlexItem>
+                            <PlaceHolder>1/12</PlaceHolder>
+                        </FlexItem>
+                    </Flex>
+                    <Flex className="row-demo row-demo-1">
+                        <FlexItem width="50px">
+                            <PlaceHolder>50px</PlaceHolder>
+                        </FlexItem>
+                        <FlexItem>
+                            <PlaceHolder>auto</PlaceHolder>
+                        </FlexItem>
+                    </Flex>
+                    <Flex className="row-demo row-demo-1">
+                        <FlexItem width="100px">
+                            <PlaceHolder>100px</PlaceHolder>
+                        </FlexItem>
+                        <FlexItem>
+                            <PlaceHolder>auto</PlaceHolder>
+                        </FlexItem>
+                        <FlexItem width="50px">
+                            <PlaceHolder>50px</PlaceHolder>
+                        </FlexItem>
+                    </Flex>
+                    <Flex className="row-demo row-demo-1">
+                        <FlexItem width="100px">
+                            <PlaceHolder>100px</PlaceHolder>
+                        </FlexItem>
+                        <FlexItem width="50px">
+                            <PlaceHolder>50px</PlaceHolder>
+                        </FlexItem>
+                        <FlexItem width="100px">
+                            <PlaceHolder>100px</PlaceHolder>
                         </FlexItem>
                     </Flex>
                 </StyledGridDemo>
@@ -192,7 +229,7 @@ export default class Example extends React.Component {
                         <FlexItem>
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
-                        <FlexItem gutter="33.33%">
+                        <FlexItem gutter={30}>
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
                     </Flex>
@@ -201,57 +238,57 @@ export default class Example extends React.Component {
                 <blockquote>Flex组件的 justify 支持 start、center、end、space-between、space-around</blockquote>
                 <StyledGridDemo>
                     <Flex className="row-demo row-demo-2" justify="start">
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
                     </Flex>
                     <Flex className="row-demo row-demo-2" justify="center">
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
                     </Flex>
                     <Flex className="row-demo row-demo-2" justify="end">
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
                     </Flex>
                     <Flex className="row-demo row-demo-2" justify="space-between">
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
                     </Flex>
                     <Flex className="row-demo row-demo-2" justify="space-around">
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
-                        <FlexItem span={"20%"}>
+                        <FlexItem width="20%">
                             <PlaceHolder>col</PlaceHolder>
                         </FlexItem>
                     </Flex>
@@ -360,21 +397,27 @@ export default class Example extends React.Component {
                             <th>默认值</th>
                         </tr>
                         <tr>
-                            <td>gutter</td>
-                            <td>栅格间隔，可以覆盖Row组件也设置gutter。数字、px值、百分比</td>
-                            <td>number/string</td>
-                            <td>-</td>
+                            <td>span</td>
+                            <td>占用剩余空间比例</td>
+                            <td>number</td>
+                            <td>1</td>
                         </tr>
                         <tr>
-                            <td>span</td>
-                            <td>删格宽度，设置宽度后去掉flex:1。数字、px值、百分比</td>
-                            <td>number/string</td>
+                            <td>width</td>
+                            <td>占用大小。如果设置 width，span将失效。</td>
+                            <td>string</td>
                             <td>-</td>
                         </tr>
                         <tr>
                             <td>align</td>
                             <td>垂直对齐方式。top middle bottom</td>
                             <td>string</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>gutter</td>
+                            <td>栅格间隔，可以覆盖Row组件也设置gutter。数字、px值、百分比</td>
+                            <td>number/string</td>
                             <td>-</td>
                         </tr>
                         <tr>

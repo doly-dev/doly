@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import styled, {css} from 'styled-components'
 import TouchFeedback from 'rmc-feedback';
-import {Flex, FlexItem} from '../flex'
 
 import createTag from '../utils/createTag'
 
@@ -115,7 +114,9 @@ const StyledCol = styled(divTag) `
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    width: ${props=>(100/props.columnNum).toFixed(2)}%;
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex-basis: ${props=>(100/props.columnNum).toFixed(2)}%;
 
     ${props=>props.square ? squareCol : ''}
 
@@ -148,8 +149,11 @@ const StyledIcon = styled(divTag)`
 `;
 const StyledText = styled(divTag)`
     margin-top: 9px;
+    padding:0 10px;
     color: #000;
     text-align: center;
+    word-break: break-all;
+    word-wrap: break-word;
     
     font-size: ${props=>props.columnNum <= 3 ? '16px' : '12px'};
 `;

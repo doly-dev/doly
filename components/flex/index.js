@@ -2,6 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
+import createTag from '../utils/createTag'
+
+const FlexTag = createTag({
+    tag: 'div',
+    propsToOmit: ['gutter', 'justify', 'align']
+});
+const FlexItemTag = createTag({
+    tag: 'div',
+    propsToOmit: ['gutter', 'order', 'span', 'width', 'align']
+});
 
 const justifyMap = {
     start: 'flex-start',
@@ -13,63 +23,56 @@ const alignMap = {
     bottom: 'flex-end'
 }
 
-const StyledFlex = styled.div `
+const StyledFlex = styled(FlexTag) `
     display: flex;
-    flex-flow: row wrap;
     box-sizing: border-box;
     width: 100%;
 
-    ${props=>{
-        let _st = '';
-
-        if(props.align){
-            _st += 'align-items:' + (alignMap[props.align] || props.align) + ';';
-        }
-
-        if(props.justify){
-            _st += 'justify-content:' + (justifyMap[props.justify] || props.justify) + ';';
-        }
-
-        return _st;
-
-    }}
+    ${props=> props.align ? 'align-items:' + (alignMap[props.align] || props.align) + ';' : ''}
+    ${props=> props.justify ? 'justify-content:' + (justifyMap[props.justify] || props.justify) + ';' : ''}
 `;
 
-const StyledFlexItem = styled.div `
+const StyledFlexItem = styled(FlexItemTag) `
     box-sizing: border-box;
+    flex-shrink: 1;
 
     ${props=>{
         let _st = '';
 
-        if(props.span){
-            if(typeof props.span === 'number'){
-                _st += 'width:' + props.span + 'px;';
-            }else if(props.span.indexOf('px') > -1 || props.span.indexOf('%') > -1){
-                _st += 'width:' + props.span + ';';
-            // }else if(props.span.indexOf('%') > -1){
-            //     _st += 'flex:0 1 ' + props.span + ';';
-            }else{
-                _st += 'flex: 1;';
+        let basis = '0%',
+            grow = props.span || 1;
+
+        if(props.width){
+            if(typeof props.width === 'number'){
+                basis = props.width + 'px';
+                grow = 0;
+            }else if(typeof props.width === 'string' && (props.width.indexOf('px') > -1 || props.width.indexOf('%') > -1)){
+                basis = props.width;
+                grow = 0;
             }
-        }else{
-            _st += 'flex: 1;';
         }
 
+        _st += `flex-basis:${basis};flex-grow:${grow};`;
+
         if(props.order){
-            _st += 'order:' + props.order + ';';
+            _st += `order:${props.order};`;
         }
 
         if(props.align){
-            _st += 'align-self:' + (alignMap[props.align] || props.align) + ';';
+            _st += `align-self:${(alignMap[props.align] || props.align)};`;
         }
 
         if(props.gutter){
             if(typeof props.gutter === 'number'){
-                _st += 'margin-left: ' + props.gutter + 'px;';
-                _st += '&:first-child{ margin-left: 0; }';
+                _st += `
+                    margin-left:${props.gutter}px;
+                    &:first-child{ margin-left: 0; }
+                `;
             }else if(typeof props.gutter === 'string' && (props.gutter.indexOf('px') > -1 || props.gutter.indexOf('%') > -1)){
-                _st += 'margin-left: ' + props.gutter + ';';
-                _st += '&:first-child{ margin-left: 0; }';
+                _st += `
+                    margin-left:${props.gutter};
+                    &:first-child{ margin-left: 0; }
+                `;
             }
         }
 
@@ -82,12 +85,15 @@ const {Provider, Consumer} = GutterContext;
 
 export class FlexItem extends React.Component{
     static propTypes = {
+        gutter: PropTypes.number,
         order: PropTypes.number,
-        span: PropTypes.oneOfType([
-            PropTypes.number,
-            PropTypes.string
-        ]),
+        span: PropTypes.number,
+        width: PropTypes.string,
         align: PropTypes.oneOf(['top', 'center', 'bottom'])
+    }
+
+    static defaultProps = {
+        span: 1
     }
 
     render(){
