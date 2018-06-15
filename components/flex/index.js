@@ -1,8 +1,10 @@
+import '../_style/common'
+import createTag from '../_utils/createTag'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
 import styled from 'styled-components'
-import createTag from '../utils/createTag'
 
 const FlexTag = createTag({
     tag: 'div',

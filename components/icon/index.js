@@ -1,9 +1,11 @@
+import '../_style/common'
+import createTag from '../_utils/createTag'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
 import styled, {css, keyframes} from 'styled-components'
 import loadSprite from './loadSprite'
-import createTag from '../utils/createTag'
 
 const sizeMap = {
     xxs: '15px',

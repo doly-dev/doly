@@ -16,8 +16,7 @@ class App extends React.Component {
             <div>
                 <div>a simple app examples preview.</div>
                 
-                <GridExample />
-                <IconExample />
+                <ButtonExample />
             </div>
         )
     }

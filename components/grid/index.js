@@ -1,10 +1,11 @@
+import '../_style/common'
+import createTag from '../_utils/createTag'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
 import styled, {css} from 'styled-components'
-import TouchFeedback from 'rmc-feedback';
-
-import createTag from '../utils/createTag'
+import TouchFeedback from 'rmc-feedback'
 
 const divTag = createTag({
     tag: 'div',
@@ -113,9 +114,6 @@ const StyledRow = styled(divTag) `
 const StyledCol = styled(divTag) `
     box-sizing: border-box;
     position: relative;
-    overflow: hidden;
-    flex-shrink: 1;
-    flex-grow: 0;
     flex-basis: ${props=>(100/props.columnNum).toFixed(2)}%;
 
     ${props=>props.square ? squareCol : ''}

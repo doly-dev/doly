@@ -1,9 +1,10 @@
+import '../_style/common'
+import createTag from '../_utils/createTag'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
 import styled, {css} from 'styled-components'
-
-import createTag from '../utils/createTag'
 
 // TODO ThemeProvider
 
@@ -70,7 +71,7 @@ const StyledButton = styled(ButtonTag) `
         }
 
         return [
-            'background:' + bgColor,
+            'background-color:' + bgColor,
             'color:' + color,
             'height:' + height,
             'line-height:' + height,
@@ -85,7 +86,7 @@ const StyledButton = styled(ButtonTag) `
         opacity: 0.7;
     }
 
-    &::after{
+    &::before{
         content: "";
         position: absolute;
         left: 0;
@@ -102,16 +103,15 @@ const StyledButton = styled(ButtonTag) `
 
     ${props => {
         // 处理边框颜色和圆角
-        let _afterStyle = '';
+        let _beforeStyle = '';
         let round = (((typeof props.round === 'number' && props.round >=0) ? props.round : 5)*2) + 'px';
 
-        _afterStyle = '&::after{ border-color:' + props.color + '; border-radius: ' + round + ';}';
+        _beforeStyle = '&::before{ border-color:' + props.color + '; border-radius: ' + round + ';}';
 
-        return _afterStyle;
+        return _beforeStyle;
     }}
 
     ${props=>props.disabled ? disabledCss : ''}
-
 `;
 
 export default class Button extends React.Component{
@@ -123,7 +123,8 @@ export default class Button extends React.Component{
         active: PropTypes.bool,
         inline: PropTypes.bool,
         disabled: PropTypes.bool,
-        as: PropTypes.string
+        as: PropTypes.string,
+        onClick: PropTypes.func
     }
 
     static defaultProps = {
@@ -132,7 +133,8 @@ export default class Button extends React.Component{
         round: 5,
         active: false,
         fill: true,
-        inline: false
+        inline: false,
+        onClick: ()=>{}
     }
 
     render(){
