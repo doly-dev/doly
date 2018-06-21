@@ -15,8 +15,15 @@ class App extends React.Component {
         return (
             <div>
                 <div>a simple app examples preview.</div>
+
+                {
+                    // <FlexExample />
+                    // <ButtonExample />
+                    // <GridExample />
+                    // <IconExample />
+                }
                 
-                <ButtonExample />
+                <SwitchExample />
             </div>
         )
     }
