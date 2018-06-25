@@ -8,7 +8,7 @@ import styled, {css} from 'styled-components'
 
 const labelTag = createTag({
     tag: 'label',
-    propsToOmit: ['checked', 'defaultChecked', 'disabled', 'color', 'platform', 'name', 'onChange']
+    propsToOmit: ['color', 'platform']
 })
 
 const StyleCheckbox = styled.div``;
@@ -205,13 +205,26 @@ export default class Switch extends React.Component{
         const {
             disabled,
             name,
+            color,
+            platform,
             ...rest
         } = this.props;
 
         const {checked} = this.state;
 
+        const globalProps = Object.keys(rest).reduce((prev, key) => {
+            if (
+                key.substr(0, 5) === 'aria-' ||
+                key.substr(0, 5) === 'data-' ||
+                key === 'role'
+            ) {
+                prev[key] = rest[key];
+            }
+            return prev;
+        }, {});
+
         return(
-            <StyleSwitch {...rest}>
+            <StyleSwitch platform={platform} color={color}>
                 <input 
                     type="checkbox" 
                     name={name} 
@@ -219,6 +232,7 @@ export default class Switch extends React.Component{
                     disabled={disabled} 
                     value={checked ? 'on' : 'off'} 
                     onChange={this.handleChange}
+                    {...globalProps}
                 />
                 <StyleCheckbox/>
             </StyleSwitch>
