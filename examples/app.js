@@ -8,6 +8,7 @@ import ButtonExample from './button-example'
 import GridExample from './grid-example'
 import IconExample from './icon-example'
 import SwitchExample from './switch-example'
+import BadgeExample from './badge-example'
 
 
 class App extends React.Component {
@@ -18,11 +19,12 @@ class App extends React.Component {
 
                 {
                     // <FlexExample />
-                    <ButtonExample />
+                    // <ButtonExample />
                     // <GridExample />
+                    // <IconExample />
                     // <SwitchExample />
                 }
-                    <IconExample />
+                <BadgeExample />
                 
             </div>
         )

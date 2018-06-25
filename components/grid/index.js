@@ -1,4 +1,4 @@
-import '../_style/common'
+import testCommon, {hairline} from '../_style/common'
 import createTag from '../_utils/createTag'
 
 import React from 'react'
@@ -25,83 +25,13 @@ const squareContent = css`
     transform: translateY(-50%);
 `;
 
-const hairlineTop = css`
-    &:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: auto;
-        right: auto;
-        height: 1px;
-        width: 100%;
-        background-color: #ddd;
-        display: block;
-        z-index: 15;
-        transform-origin: 50% 0%;
-        transform: scaleY(0.5);
-    }
-`
-
-const hairlineRight = css`
-    &:after {
-        content: '';
-        position: absolute;
-        left: auto;
-        top: 0;
-        bottom: auto;
-        right: 0;
-        height: 100%;
-        width: 1px;
-        background-color: #ddd;
-        display: block;
-        z-index: 15;
-        transform-origin: 100% 50%;
-        transform: scaleX(0.5);
-    }
-`
-
-const hairlineBottom = css`
-    &:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: auto;
-        bottom: 0;
-        right: auto;
-        height: 1px;
-        width: 100%;
-        background-color: #ddd;
-        display: block;
-        z-index: 15;
-        transform-origin: 50% 100%;
-        transform: scaleY(0.5);
-    }
-`
-
-const hairlineLeft = css`
-    &:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: auto;
-        right: auto;
-        height: 100%;
-        width: 1px;
-        background-color: #ddd;
-        display: block;
-        z-index: 15;
-        transform-origin: 0 50%;
-        transform: scaleX(0.5);
-    }
-`
-
 const StyledGrid = styled(divTag) `
     position: relative;
     background: #fff;
 
-    ${props=>props.hasLine ? hairlineRight + hairlineTop : ''}
+    ${props=>{
+        return props.hasLine ? hairline('right') + hairline('top') : ''
+    }}
 `;
 const StyledRow = styled(divTag) `
     box-sizing: border-box;
@@ -109,7 +39,7 @@ const StyledRow = styled(divTag) `
     width: 100%;
     position: relative;
 
-    ${props=>props.hasLine ? hairlineLeft + hairlineBottom : ''}
+    ${props=>props.hasLine ? hairline('left') + hairline('bottom') : ''}
 `;
 const StyledCol = styled(divTag) `
     box-sizing: border-box;
@@ -118,7 +48,7 @@ const StyledCol = styled(divTag) `
 
     ${props=>props.square ? squareCol : ''}
 
-    ${props=>props.hasLine ? hairlineRight : ''}
+    ${props=>props.hasLine ? hairline('right') : ''}
 `;
 
 const StyledContent = styled(divTag) `

@@ -1,51 +1,10 @@
 import React from 'react'
 
-import styled, {injectGlobal} from 'styled-components'
+import styled from 'styled-components'
 
+import './style'
 import Icon from '../components/icon'
 import Button from '../components/button'
-
-injectGlobal`
-    body{
-        background: #f5f5f5;
-    }
-    blockquote{
-        font-size: 12px;
-        color: #999;
-    }
-
-    table{
-        border-collapse: collapse;
-        border-spacing: 0;
-        empty-cells: show;
-        border: 1px solid #ebedf0;
-        width: 100%;
-        margin: 8px 0 16px;
-        font-size: 14px;
-        line-height: 1.5;
-        color: #314659;
-        background: #fff;
-
-        th, td{
-            border: 1px solid #ebedf0;
-            padding: 16px 24px;
-            text-align: left;
-        }
-
-        th{
-            white-space: nowrap;
-            color: #5c6b77;
-            font-weight: 500;
-            background: rgba(0,0,0,.02);
-        }
-
-        td{
-            font-weight: 500;
-            width: 20%;
-            font-family: Lucida Console,Consolas,Menlo,Courier,monospace;
-        }
-    }
-`;
 
 const StyledDemo = styled.div`
     button{
@@ -90,8 +49,9 @@ export default class Example extends React.Component {
                     <Button inline size="small" color={colors.black}>按钮</Button>
                     <h3>圆角</h3>
                     <blockquote>round</blockquote>
-                    <Button round={0} color={colors.blue}>按钮22</Button>
+                    <Button round={0} fill={false} color={colors.blue}>按钮22</Button>
                     <Button round={20} color={colors.red}>按钮22</Button>
+                    <Button round={20} color={colors.red} fill={false} inline>按钮22</Button>
                     <h3>禁用</h3>
                     <blockquote>disabled</blockquote>
                     <Button disabled fill={false} color={colors.blue}>按钮</Button>
@@ -162,9 +122,9 @@ export default class Example extends React.Component {
                             </tr>
                             <tr>
                                 <td>icon</td>
-                                <td>图标</td>
+                                <td>图标。Icon内置图标 或 自定义Icon/Img</td>
                                 <td>string/Element</td>
-                                <td>Icon内置图标 或 自定义Icon/Img</td>
+                                <td>-</td>
                             </tr>
                         </tbody>
                     </table>
