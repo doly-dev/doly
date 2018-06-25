@@ -2,6 +2,7 @@ import React from 'react'
 
 import styled, {injectGlobal} from 'styled-components'
 
+import Icon from '../components/icon'
 import Button from '../components/button'
 
 injectGlobal`
@@ -97,6 +98,21 @@ export default class Example extends React.Component {
                     <Button disabled color={colors.red}>按钮</Button>
                     <Button disabled fill={false} inline size="small" color={colors.blue}>按钮</Button>
                     <Button disabled inline size="small" color={colors.red}>按钮</Button>
+                    <h3>图标</h3>
+                    <blockquote>icon</blockquote>
+                    <Button icon={
+                        <Icon type="loading" color="#f9f9f9"/>
+                    } color={colors.blue}>loading</Button>
+                    <Button icon={
+                        <Icon type="loading" color="#f9f9f9"/>
+                    } color={colors.blue} disabled>loading</Button>
+                    <Button icon="wait" inline>等待中</Button>
+                    {
+                        /*<Button icon={
+                            <img src="https://gw.alipayobjects.com/zos/rmsportal/jBfVSpDwPbitsABtDDlB.svg" alt="" />
+                        } inline>loading</Button>*/
+                    }
+                    <Button icon="wait" size="small" inline>等待中</Button>
 
                     <h3>API</h3>
                     <h4>Button</h4>
@@ -143,6 +159,12 @@ export default class Example extends React.Component {
                                 <td>禁用</td>
                                 <td>boolean</td>
                                 <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>icon</td>
+                                <td>图标</td>
+                                <td>string/Element</td>
+                                <td>Icon内置图标 或 自定义Icon/Img</td>
                             </tr>
                         </tbody>
                     </table>

@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 
 import styled, {css} from 'styled-components'
 
+import Icon from '../icon'
+
 // TODO ThemeProvider
 
 const ButtonTag = createTag({
@@ -28,6 +30,39 @@ const disabledCss = css `
     }
 `;
 
+const StyledIcon = styled.span `
+    display: inline-flex;
+    height: 100%;
+    justify-centent: center;
+    align-items: center;
+    margin-right: 0.3em;
+    vertical-align: top;
+
+    img{
+        display: inline-block;
+        vertical-align: middle;
+
+        ${props=>{
+            let size = '22px';
+            if(props.size === 'small'){
+                size = '15px';
+            }
+
+            return `
+                width: ${size};
+                height: ${size};
+            `
+        }}
+    }
+`;
+
+const StyledText = styled.span `
+    display: inline-flex;
+    height: 100%;
+    justify-centent: center;
+    align-items: center;
+`;
+
 const StyledButton = styled(ButtonTag) `
     position: relative;
     outline: 0 none;
@@ -37,6 +72,7 @@ const StyledButton = styled(ButtonTag) `
     text-overflow: ellipsis;
     word-break: break-word;
     white-space: nowrap;
+    max-width: 100%;
     border: 0 none;
     padding: 0 15px;
 
@@ -55,7 +91,7 @@ const StyledButton = styled(ButtonTag) `
             width = 'auto';
         }
 
-        if(props.size && props.size === 'small'){
+        if(props.size === 'small'){
             fontSize = '14px';
             height = '30px';
         }
@@ -138,8 +174,33 @@ export default class Button extends React.Component{
     }
 
     render(){
+        const {
+            children,
+            icon,
+            ...rest
+        } = this.props;
+    
+        let iconEl = null;
+
+        if(typeof icon === 'string'){
+            iconEl = (
+                <Icon
+                    aria-hidden="true"
+                    type={icon}
+                    size={rest.size === 'small' ? 'xxs' : 'md'}
+                />
+            );
+        }else if(React.isValidElement(icon)){
+            iconEl = icon;
+        }
+
         return(
-            <StyledButton {...this.props} />
+            <StyledButton {...rest}>
+                {
+                    iconEl ? <StyledIcon size={rest.size}>{iconEl}</StyledIcon> : null
+                }
+                <StyledText>{children}</StyledText>
+            </StyledButton>
         )
     }
 }

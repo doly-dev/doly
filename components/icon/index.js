@@ -31,9 +31,10 @@ const rotateCss = css`
 `;
 
 const StyledIcon = styled(svgTag) `
-    display: block;
+    display: inline-block;
     fill: currentColor;
     background-size: cover;
+    vertical-align: middle;
 
     width: ${props=>sizeMap[props.size]};
     height: ${props=>sizeMap[props.size]};
