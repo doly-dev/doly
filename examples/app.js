@@ -23,8 +23,8 @@ class App extends React.Component {
                     // <GridExample />
                     // <IconExample />
                     // <SwitchExample />
+                    <BadgeExample />
                 }
-                <BadgeExample />
                 
             </div>
         )

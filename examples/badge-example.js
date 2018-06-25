@@ -17,6 +17,7 @@ export default class Example extends React.Component {
                 <h2>Badge</h2>
                 <StyledDemo>
                     <h3>小红点</h3>
+                    <Badge count={1}/>
                     <Badge dot>
                         <span style={{ width: '26px', height: '26px', background: '#ddd', display: 'inline-block' }} />
                     </Badge>
