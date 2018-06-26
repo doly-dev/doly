@@ -69,7 +69,7 @@ export default class Example extends React.Component {
                     <Button icon="wait" inline>等待中</Button>
                     {
                         /*<Button icon={
-                            <img src="https://gw.alipayobjects.com/zos/rmsportal/jBfVSpDwPbitsABtDDlB.svg" alt="" />
+                            <img src="https://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg" alt="" />
                         } inline>loading</Button>*/
                     }
                     <Button icon="wait" size="small" inline>等待中</Button>

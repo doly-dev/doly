@@ -17,13 +17,36 @@ export default class Example extends React.Component {
                 <h2>Badge</h2>
                 <StyledDemo>
                     <h3>小红点</h3>
-                    <Badge count={1}/>
+                    <Badge dot/>
+                    <br/>
                     <Badge dot>
                         <span style={{ width: '26px', height: '26px', background: '#ddd', display: 'inline-block' }} />
                     </Badge>
+                    <br/>
+                    <Badge dot>
+                        <span>消息</span>
+                    </Badge>
                     <h3>数字</h3>
-                    <Badge text={77} overflowCount={55} />
-                    <Badge text={77} overflowCount={55}>
+                    <Badge text={1}/>
+                    <br/>
+                    <Badge text={100}/>
+                    <br/>
+                    <br/>
+                    <Badge text={100}>
+                        <span style={{ width: '26px', height: '26px', background: '#ddd', display: 'inline-block' }} />
+                    </Badge>
+                    <br/>
+                    <br/>
+                    <Badge text={1000} overflowCount={999}>
+                        <span style={{ width: '26px', height: '26px', background: '#ddd', display: 'inline-block' }} />
+                    </Badge>
+                    <h3>文本</h3>
+                    <Badge text={'HOT'}/>
+                    <Badge text={'new'}/>
+                    <Badge text={'减'}/>
+                    <br/>
+                    <br/>
+                    <Badge text={'优惠'}>
                         <span style={{ width: '26px', height: '26px', background: '#ddd', display: 'inline-block' }} />
                     </Badge>
                     <h3>置于角落</h3>
