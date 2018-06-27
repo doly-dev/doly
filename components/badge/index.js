@@ -42,16 +42,44 @@ const StyledBadgeText = styled.span `
     white-space: nowrap;
 `;
 
+const StyledCorner = styled.span `
+    display: inline-block;
+    width: 36px;
+    padding: 0 13px;
+    font-size: 12px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    color: #fff;
+    background: #ff3b30;
+    position: absolute;
+    top: 26px;
+    right: 0px;
+    transform: rotate(45deg);
+    transform-origin: right bottom;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+`;
+
+const StyledCornerWrapper = styled.span`
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 44px;
+    min-height: 44px;
+    overflow: hidden;
+`;
+
 const StyledPositionWrapper = styled.span `
 	position: relative;
 	display: inline-block;
-	line-height: 1;
 	vertical-align: middle;
 
 	${StyledBadgeText}, ${StyledBadgeDot}{
 		position: absolute;
 	    transform: translateX(-50%);
-	    transform-origin: 0 center;
+        left: 100%;
 	    top: -4px;
 	    z-index: 10;
 	}
@@ -91,29 +119,9 @@ export default class Badge extends React.Component{
 
 	static defaultProps = {
 		dot: false,
-		color: '#ff3b30',
+		// color: '#ff3b30',
 		corner: false,
 		overflowCount: 99
-	}
-
-	getTextView(){
-		const {text, overflowCount, showZero, color} = this.props;
-
-		let str = text;
-
-		if(isNumber(text)){
-			if(text > overflowCount){
-				str = `${overflowCount}+`;
-			}else if(text === 0 && !showZero){
-				str = '';
-			}
-		}
-
-		if(!str){
-			return null;
-		}
-
-		return <StyledBadgeText>{str}</StyledBadgeText>
 	}
 
     render(){
@@ -123,6 +131,7 @@ export default class Badge extends React.Component{
     		color,
     		text,
     		showZero,
+            corner,
     		overflowCount,
     		children,
     		...rest
@@ -130,31 +139,39 @@ export default class Badge extends React.Component{
 
     	const _hasChildren = hasChildren(children);
 
-    	if(React.isValidElement(children)){
-    		console.log(1, _hasChildren);
-    	}else{
-    		console.log(0, _hasChildren);
-    	}
-
     	let _view = null;
+        let styles = color ? {background: color} : {};
 
 		if(dot){
-			_view = <StyledBadgeDot color={color} />
-		}else if(text){
-			_view = this.getTextView();
+			_view = <StyledBadgeDot style={styles} {...rest} />
+		}else if(typeof text !== 'undefined'){
+            let str = text;
+
+            if(isNumber(text)){
+                if(text > overflowCount){
+                    str = `${overflowCount}+`;
+                }else if(text === 0 && !showZero){
+                    str = null;
+                }
+            }
+
+            if(typeof str === 'number' || str){
+                _view = corner ? <StyledCorner style={styles} {...rest}>{str}</StyledCorner> : <StyledBadgeText style={styles} {...rest}>{str}</StyledBadgeText>
+            }
 		}
 
-		if(_hasChildren){
-			return <StyledPositionWrapper>{children}{_view}</StyledPositionWrapper>
-		}else{
-			return _view
-		}
+        if(!_view){
+            return <React.Fragment>{children}</React.Fragment>
+        }
 
-        return(
-            <StyledPositionWrapper>
-            	{children}
-				<StyledBadgeDot>{text}</StyledBadgeDot>
-            </StyledPositionWrapper>
-        )
+        if(corner && !dot){
+            return <StyledCornerWrapper>{children}{_view}</StyledCornerWrapper>
+        }else{
+            if(_hasChildren){
+                return <StyledPositionWrapper>{children}{_view}</StyledPositionWrapper>
+            }else{
+                return _view
+            }
+        }
     }
 }

@@ -380,7 +380,7 @@ export default class Example extends React.Component {
                         <tr>
                             <td>gutter</td>
                             <td>栅格间隔，可以覆盖Row组件也设置gutter。数字、px值、百分比</td>
-                            <td>number/string</td>
+                            <td>number|string</td>
                             <td>-</td>
                         </tr>
                         <tr>

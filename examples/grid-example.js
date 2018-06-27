@@ -129,7 +129,7 @@ export default class Example extends React.Component {
                             <tr>
                                 <td>activeStyle</td>
                                 <td>点击反馈的自定义样式 (设为 false 时表示禁止点击反馈)</td>
-                                <td>object/false</td>
+                                <td>object|false</td>
                                 <td>{}</td>
                             </tr>
                             <tr>

@@ -123,7 +123,7 @@ export default class Example extends React.Component {
                             <tr>
                                 <td>icon</td>
                                 <td>图标。Icon内置图标 或 自定义Icon/Img</td>
-                                <td>string/Element</td>
+                                <td>string|Element</td>
                                 <td>-</td>
                             </tr>
                         </tbody>

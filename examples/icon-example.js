@@ -99,13 +99,13 @@ export default class Example extends React.Component {
                             <tr>
                                 <td>color</td>
                                 <td>图标颜色</td>
-                                <td>Color</td>
+                                <td>string</td>
                                 <td>'#000'</td>
                             </tr>
                             <tr>
                                 <td>size</td>
-                                <td>图标大小</td>
-                                <td>'xxs'/'xs'/'sm'/'md'/'lg'</td>
+                                <td>图标大小。'xxs'|'xs'|'sm'|'md'|'lg'</td>
+                                <td>string</td>
                                 <td>md</td>
                             </tr>
                         </tbody>
