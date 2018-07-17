@@ -54,7 +54,7 @@ export default class Example extends React.Component {
     render(){
         return (
             <div>
-                <h2>Grid</h2>
+                <h2>Grid 网格</h2>
                 <StyledDemo>
                     <h3>基础</h3>
                     <Grid data={data1} />

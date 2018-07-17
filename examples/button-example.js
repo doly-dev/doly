@@ -23,7 +23,7 @@ export default class Example extends React.Component {
     render(){
         return (
             <div>
-                <h2>Button</h2>
+                <h2>Button 按钮</h2>
                 <StyledDemo>
                     <h3>基础</h3>
                     <Button>默认按钮</Button>

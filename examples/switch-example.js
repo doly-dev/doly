@@ -26,7 +26,7 @@ export default class Example extends React.Component {
 
         return (
             <div>
-                <h2>Switch</h2>
+                <h2>Switch 滑动开关</h2>
                 <StyledDemo>
                     <h3>Off</h3>
                     <Switch onChange={this.handleChange} />

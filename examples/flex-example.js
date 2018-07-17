@@ -62,7 +62,7 @@ export default class Example extends React.Component {
     render(){
         return (
             <div>
-                <h2>Flex</h2>
+                <h2>Flex 布局</h2>
                 <h3>基础删格</h3>
                 <blockquote>FlexItem组件span 占用剩余空间比例。width 占用大小。同时有width和span的情况下，仅width有效</blockquote>
                 <StyledGridDemo>

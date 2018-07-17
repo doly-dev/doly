@@ -14,7 +14,7 @@ export default class Example extends React.Component {
     render(){
         return (
             <div>
-                <h2>Badge</h2>
+                <h2>Badge 徽标数</h2>
                 <StyledDemo>
                     <h3>小红点</h3>
                     <blockquote>dot</blockquote>
