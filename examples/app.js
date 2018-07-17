@@ -20,7 +20,7 @@ class App extends React.Component {
                 {
                     // <FlexExample />
                     // <ButtonExample />
-                    // <GridExample />
+                    <GridExample />
                     // <IconExample />
                     // <SwitchExample />
                     // <BadgeExample />

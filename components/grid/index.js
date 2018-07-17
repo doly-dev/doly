@@ -212,13 +212,13 @@ export default class Grid extends React.Component{
                                                 key={`${this.id + rowIndex + colIndex}`} 
                                                 activeClassName={activeClassName}
                                                 activeStyle={_activeStyle}
-                                                onClick={()=>{onClick && onClick(colItem, rowIndex*this.columnNum+colIndex)}}
                                             >
                                                 <StyledCol
                                                     style={itemStyle}
                                                     square={square}
                                                     hasLine={hasLine}
                                                     columnNum={this.columnNum}
+                                                    onClick={()=>{onClick && onClick(colItem, rowIndex*this.columnNum+colIndex)}}
                                                 >
                                                     <StyledContent square={square}>
                                                         {this.renderItem(colItem, rowIndex*this.columnNum+colIndex)}

@@ -51,22 +51,26 @@ const data1 = genData();
 const data2 = genData('lg');
 
 export default class Example extends React.Component {
+    handleClick=(item, index)=>{
+        console.log(item);
+        console.log(index);
+    }
     render(){
         return (
             <div>
                 <h2>Grid 网格</h2>
                 <StyledDemo>
                     <h3>基础</h3>
-                    <Grid data={data1} />
+                    <Grid data={data1} onClick={this.handleClick} />
                     <h3>不显示正方形</h3>
                     <blockquote>square</blockquote>
-                    <Grid data={data1} square={false} />
+                    <Grid data={data1} square={false} onClick={this.handleClick}  />
                     <h3>列数</h3>
                     <blockquote>columnNum</blockquote>
-                    <Grid data={data1} columnNum={5} />
+                    <Grid data={data1} columnNum={5} onClick={this.handleClick}  />
                     <h3>无边框</h3>
                     <blockquote>hasLine</blockquote>
-                    <Grid data={data1} columnNum={5} hasLine={false} />
+                    <Grid data={data1} columnNum={5} hasLine={false} onClick={this.handleClick}  />
                     <h3>样式</h3>
                     <blockquote>itemStyle、activeStyle、activeClassName</blockquote>
                     <Grid data={data1} columnNum={3} itemStyle={{background: 'rgba(0,0,0,0.05)'}} activeStyle={{background: '#fff'}} activeClassName="test-active-class" onClick={(item, index)=>{console.log(index)}} />
@@ -78,7 +82,7 @@ export default class Example extends React.Component {
                                 {item.icon}
                             </div>
                         )
-                    }} />
+                    }} onClick={this.handleClick} />
 
                     <h3>API</h3>
                     <h4>Grid</h4>
@@ -99,7 +103,7 @@ export default class Example extends React.Component {
                             <tr>
                                 <td>onClick</td>
                                 <td>点击每个菜单的回调函数</td>
-                                <td>function (el: object, index: number)</td>
+                                <td>function (item: object, index: number)</td>
                                 <td>-</td>
                             </tr>
                             <tr>
@@ -123,7 +127,7 @@ export default class Example extends React.Component {
                             <tr>
                                 <td>renderItem</td>
                                 <td>自定义每个 grid 条目的创建函数</td>
-                                <td>function (el, index) => React.Node</td>
+                                <td>function (item, index) => React.Node</td>
                                 <td>-</td>
                             </tr>
                             <tr>
