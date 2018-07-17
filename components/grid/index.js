@@ -121,7 +121,8 @@ export default class Grid extends React.Component{
         columnNum: 4,
         activeStyle: {},
         activeClassName: '',
-        itemStyle: {}
+        itemStyle: {},
+        wrapperStyle: {}
     }
 
     renderItem(item, index){
@@ -176,7 +177,8 @@ export default class Grid extends React.Component{
             columnNum,
             activeStyle,
             activeClassName,
-            itemStyle
+            itemStyle,
+            wrapperStyle
         } = this.props;
 
         if(data.length <= 0){
@@ -200,7 +202,7 @@ export default class Grid extends React.Component{
         }
 
         return(
-            <StyledGrid hasLine={hasLine}>
+            <StyledGrid hasLine={hasLine} style={wrapperStyle}>
                 {
                     dataArr.map((rowItem, rowIndex)=>{
                         return (

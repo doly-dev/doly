@@ -12,7 +12,7 @@ import Icon from '../icon'
 
 const ButtonTag = createTag({
     tag: 'button',
-    propsToOmit: ['fill', 'round', 'active', 'size', 'inline', 'color', 'disabled']
+    propsToOmit: ['fill', 'round', 'active', 'size', 'inline', 'color']
 });
 
 const isWhiteColor = (color)=>{
