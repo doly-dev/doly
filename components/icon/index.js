@@ -46,7 +46,8 @@ export default class Icon extends React.Component{
     static propTypes = {
         type: PropTypes.string.isRequired,
         color: PropTypes.string,
-        size: PropTypes.oneOf(['xxs', 'xs', 'sm', 'md', 'lg'])
+        size: PropTypes.oneOf(['xxs', 'xs', 'sm', 'md', 'lg']),
+        style: PropTypes.object
     }
 
     static defaultProps = {
@@ -62,13 +63,15 @@ export default class Icon extends React.Component{
         const {
             type,
             color,
+            style,
             ...rest
         } = this.props;
 
-        let style = color ? {color: color} : {};
+        const colorStyle = color ? {color: color} : {};
+        const styles = style ? {...colorStyle, ...style} : colorStyle;
 
         return(
-            <StyledIcon style={style} {...this.props}>
+            <StyledIcon {...this.props} style={styles}>
                 <use xlinkHref={`#${type}`} />
             </StyledIcon>
         )

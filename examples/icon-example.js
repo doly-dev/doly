@@ -44,14 +44,14 @@ const colorMap = ['red', 'blue', 'green', 'pink'];
 
 const data1 = icons.map((icon)=>{
     return {
-        icon: <Icon type={icon} />,
+        icon: <Icon type={icon} style={{width: '54px', height: '54px'}} />,
         text: icon
     }
 });
 const data2 = colorMap.map((color)=>{
     return colorIcon.map((icon)=>{
         return {
-            icon: <Icon type={icon} color={color} />,
+            icon: <Icon type={icon} color={color} style={{width: '54px', height: '54px'}} />,
             text: icon
         }
     })
