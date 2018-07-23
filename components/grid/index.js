@@ -9,7 +9,7 @@ import TouchFeedback from 'rmc-feedback'
 
 const divTag = createTag({
     tag: 'div',
-    propsToOmit: ['data','hasLine','renderItem','square','columnNum','activeStyle','activeClassName','itemStyle']
+    propsToOmit: ['data','hasLine','renderItem','square','columnNum','activeStyle','activeClassName','itemStyle', 'lineColor', 'wrapperStyle']
 })
 
 const squareCol = css`
@@ -30,7 +30,7 @@ const StyledGrid = styled(divTag) `
     background: #fff;
 
     ${props=>{
-        return props.hasLine ? hairline('right') + hairline('top') : ''
+        return props.hasLine ? hairline('right', props.lineColor) + hairline('top', props.lineColor) : ''
     }}
 `;
 const StyledRow = styled(divTag) `
@@ -39,7 +39,7 @@ const StyledRow = styled(divTag) `
     width: 100%;
     position: relative;
 
-    ${props=>props.hasLine ? hairline('left') + hairline('bottom') : ''}
+    ${props=>props.hasLine ? hairline('left', props.lineColor) + hairline('bottom', props.lineColor) : ''}
 `;
 const StyledCol = styled(divTag) `
     box-sizing: border-box;
@@ -48,7 +48,7 @@ const StyledCol = styled(divTag) `
 
     ${props=>props.square ? squareCol : ''}
 
-    ${props=>props.hasLine ? hairline('right') : ''}
+    ${props=>props.hasLine ? hairline('right', props.lineColor) : ''}
 `;
 
 const StyledContent = styled(divTag) `
@@ -105,18 +105,21 @@ export default class Grid extends React.Component{
         data: PropTypes.array.isRequired,
         onClick: PropTypes.func,
         hasLine: PropTypes.bool,
+        lineColor: PropTypes.string,
         renderItem: PropTypes.func,
         square: PropTypes.bool,
         columnNum: PropTypes.number,
         activeStyle: PropTypes.object,
         activeClassName: PropTypes.string,
-        itemStyle: PropTypes.object
+        itemStyle: PropTypes.object,
+        wrapperStyle: PropTypes.object,
     }
 
     static defaultProps = {
         data: [],
         onClick: noop,
         hasLine: true,
+        lineColor: '#ddd',
         square: true,
         columnNum: 4,
         activeStyle: {},
@@ -172,6 +175,7 @@ export default class Grid extends React.Component{
             data,
             onClick,
             hasLine,
+            lineColor,
             renderItem,
             square,
             columnNum,
@@ -202,11 +206,11 @@ export default class Grid extends React.Component{
         }
 
         return(
-            <StyledGrid hasLine={hasLine} style={wrapperStyle}>
+            <StyledGrid hasLine={hasLine} lineColor={lineColor} style={wrapperStyle}>
                 {
                     dataArr.map((rowItem, rowIndex)=>{
                         return (
-                            <StyledRow key={`${this.id + rowIndex}`} hasLine={hasLine}>
+                            <StyledRow key={`${this.id + rowIndex}`} hasLine={hasLine} lineColor={lineColor}>
                                 {
                                     rowItem.map((colItem, colIndex)=>{
                                         return (
@@ -219,6 +223,7 @@ export default class Grid extends React.Component{
                                                     style={itemStyle}
                                                     square={square}
                                                     hasLine={hasLine}
+                                                    lineColor={lineColor}
                                                     columnNum={this.columnNum}
                                                     onClick={()=>{onClick && onClick(colItem, rowIndex*this.columnNum+colIndex)}}
                                                 >

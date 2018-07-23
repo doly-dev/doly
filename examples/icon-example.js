@@ -44,14 +44,14 @@ const colorMap = ['red', 'blue', 'green', 'pink'];
 
 const data1 = icons.map((icon)=>{
     return {
-        icon: <Icon type={icon} style={{width: '54px', height: '54px'}} />,
+        icon: <Icon type={icon} />,
         text: icon
     }
 });
 const data2 = colorMap.map((color)=>{
     return colorIcon.map((icon)=>{
         return {
-            icon: <Icon type={icon} color={color} style={{width: '54px', height: '54px'}} />,
+            icon: <Icon type={icon} color={color} />,
             text: icon
         }
     })
@@ -61,6 +61,13 @@ const data3 = sizeMap.map((size)=>{
     return {
         icon: <Icon type={icons[0]} size={size} />,
         text: size
+    }
+});
+
+const data4 = sizeMap.map((size, index)=>{
+    return {
+        icon: <Icon type={icons[0]} style={{width: '64px', height: '64px'}} color={colorMap[index] || ''} />,
+        text: '64x64'
     }
 });
 
@@ -79,6 +86,9 @@ export default class Example extends React.Component {
                     <h3>尺寸</h3>
                     <blockquote>size</blockquote>
                     <Grid data={data3} columnNum={5} square={false} hasLine={false} />
+                    <h3>样式</h3>
+                    <blockquote>自定义style</blockquote>
+                    <Grid data={data4} columnNum={3} />
 
                     <h3>API</h3>
                     <h4>Icon</h4>

@@ -83,6 +83,11 @@ export default class Example extends React.Component {
                             </div>
                         )
                     }} onClick={this.handleClick} />
+                    <h3>自定义外层样式、边框颜色</h3>
+                    <blockquote>wrapperStyle、lineColor</blockquote>
+                    <Grid data={data2} lineColor='red' wrapperStyle={{
+                        background: '#eee'
+                    }} />
 
                     <h3>API</h3>
                     <h4>Grid</h4>
@@ -125,10 +130,22 @@ export default class Example extends React.Component {
                                 <td>true</td>
                             </tr>
                             <tr>
+                                <td>lineColor</td>
+                                <td>边框颜色</td>
+                                <td>string</td>
+                                <td>#ddd</td>
+                            </tr>
+                            <tr>
                                 <td>renderItem</td>
                                 <td>自定义每个 grid 条目的创建函数</td>
                                 <td>function (item, index) => React.Node</td>
                                 <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>itemStyle</td>
+                                <td>每个格子自定义样式</td>
+                                <td>object</td>
+                                <td>{}</td>
                             </tr>
                             <tr>
                                 <td>activeStyle</td>
@@ -143,10 +160,10 @@ export default class Example extends React.Component {
                                 <td>-</td>
                             </tr>
                             <tr>
-                                <td>itemStyle</td>
-                                <td>每个格子自定义样式</td>
+                                <td>wrapperStyle</td>
+                                <td>自定义最外层样式</td>
                                 <td>object</td>
-                                <td>{}</td>
+                                <td>{`backgroundColor\: 'white'`}</td>
                             </tr>
                         </tbody>
                     </table>

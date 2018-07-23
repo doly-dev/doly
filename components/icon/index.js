@@ -51,8 +51,8 @@ export default class Icon extends React.Component{
     }
 
     static defaultProps = {
-        size: 'md',
-        color: '#000'
+        size: 'md'
+        // color: '#000'
     }
 
     componentWillMount() {
