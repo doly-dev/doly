@@ -9,7 +9,9 @@ import GridExample from './grid-example'
 import IconExample from './icon-example'
 import SwitchExample from './switch-example'
 import BadgeExample from './badge-example'
-
+import Portal01Example from './portal01-example'
+import Portal02Example from './portal02-example'
+import Portal03Example from './portal03-example'
 
 class App extends React.Component {
     render(){
@@ -20,10 +22,13 @@ class App extends React.Component {
                 {
                     // <FlexExample />
                     // <ButtonExample />
-                    <GridExample />
+                    // <GridExample />
                     // <IconExample />
                     // <SwitchExample />
                     // <BadgeExample />
+                    // <Portal01Example />
+                    // <Portal02Example />
+                    <Portal03Example />
                 }
                 
             </div>
