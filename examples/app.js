@@ -12,6 +12,7 @@ import BadgeExample from './badge-example'
 import Portal01Example from './portal01-example'
 import Portal02Example from './portal02-example'
 import Portal03Example from './portal03-example'
+import Portal04Example from './portal03-example'
 
 class App extends React.Component {
     render(){
@@ -28,7 +29,8 @@ class App extends React.Component {
                     // <BadgeExample />
                     // <Portal01Example />
                     // <Portal02Example />
-                    <Portal03Example />
+                    // <Portal03Example />
+                    <Portal04Example />
                 }
                 
             </div>
