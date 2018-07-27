@@ -13,6 +13,7 @@ import Portal01Example from './portal01-example'
 import Portal02Example from './portal02-example'
 import Portal03Example from './portal03-example'
 import Portal04Example from './portal03-example'
+import TransitionExample from './transition-example'
 
 class App extends React.Component {
     render(){
@@ -30,7 +31,8 @@ class App extends React.Component {
                     // <Portal01Example />
                     // <Portal02Example />
                     // <Portal03Example />
-                    <Portal04Example />
+                    // <Portal04Example />
+                    <TransitionExample />
                 }
                 
             </div>
