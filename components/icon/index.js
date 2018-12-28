@@ -1,4 +1,4 @@
-import '../_style/common'
+import { GlobalStyle } from '../_style/common'
 import createTag from '../_utils/createTag'
 
 import React from 'react'
@@ -72,6 +72,7 @@ export default class Icon extends React.Component{
 
         return(
             <StyledIcon {...this.props} style={styles}>
+                <GlobalStyle />
                 <use xlinkHref={`#${type}`} />
             </StyledIcon>
         )

@@ -1,8 +1,6 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 
-import styled, {injectGlobal} from 'styled-components'
-
 import FlexExample from './flex-example'
 import ButtonExample from './button-example'
 import GridExample from './grid-example'
@@ -15,10 +13,13 @@ import Portal03Example from './portal03-example'
 import Portal04Example from './portal03-example'
 import TransitionExample from './transition-example'
 
+import GlobalStyle from './style';
+
 class App extends React.Component {
     render(){
         return (
             <div>
+                <GlobalStyle />
                 <div>a simple app examples preview.</div>
 
                 {
@@ -26,13 +27,13 @@ class App extends React.Component {
                     // <ButtonExample />
                     // <GridExample />
                     // <IconExample />
-                    // <SwitchExample />
+                    <SwitchExample />
                     // <BadgeExample />
                     // <Portal01Example />
                     // <Portal02Example />
                     // <Portal03Example />
                     // <Portal04Example />
-                    <TransitionExample />
+                    // <TransitionExample />
                 }
                 
             </div>

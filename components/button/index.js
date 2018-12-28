@@ -1,4 +1,4 @@
-import '../_style/common'
+import { GlobalStyle } from '../_style/common'
 import createTag from '../_utils/createTag'
 
 import React from 'react'
@@ -196,6 +196,7 @@ export default class Button extends React.Component{
 
         return(
             <StyledButton {...rest}>
+                <GlobalStyle />
                 {
                     iconEl ? <StyledIcon size={rest.size}>{iconEl}</StyledIcon> : null
                 }

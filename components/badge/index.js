@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {isNumber} from 'lodash'
 import styled, {css} from 'styled-components'
 
-import '../_style/common'
+import { GlobalStyle } from '../_style/common'
 import createTag from '../_utils/createTag'
 
 const inlineTag = createTag({

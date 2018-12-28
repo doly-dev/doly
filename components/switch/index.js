@@ -1,4 +1,4 @@
-import '../_style/common'
+import { GlobalStyle } from '../_style/common'
 import createTag from '../_utils/createTag'
 
 import React from 'react'
@@ -225,6 +225,7 @@ export default class Switch extends React.Component{
 
         return(
             <StyleSwitch platform={platform} color={color}>
+                <GlobalStyle />
                 <input 
                     type="checkbox" 
                     name={name} 

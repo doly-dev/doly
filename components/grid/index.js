@@ -1,4 +1,4 @@
-import testCommon, {hairline} from '../_style/common'
+import { hairline, GlobalStyle } from '../_style/common'
 import createTag from '../_utils/createTag'
 
 import React from 'react'
@@ -207,6 +207,7 @@ export default class Grid extends React.Component{
 
         return(
             <StyledGrid hasLine={hasLine} lineColor={lineColor} style={wrapperStyle}>
+                <GlobalStyle />
                 {
                     dataArr.map((rowItem, rowIndex)=>{
                         return (

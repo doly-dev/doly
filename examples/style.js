@@ -1,6 +1,6 @@
-import {injectGlobal} from 'styled-components'
+import {createGlobalStyle} from 'styled-components'
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
     body{
         background: #f5f5f5;
     }
@@ -41,3 +41,5 @@ injectGlobal`
         }
     }
 `;
+
+export default GlobalStyle;

@@ -1,13 +1,19 @@
-import {injectGlobal, css} from 'styled-components';
+import {createGlobalStyle, css} from 'styled-components';
 
 // 移动端:active伪类无效的解决方法
 document.body.addEventListener('touchstart', ()=>{});
 
-injectGlobal `
+// injectGlobal `
+//     *, *:after, *:before {
+//         -webkit-tap-highlight-color: rgba(0,0,0,0);
+//     }
+// `;
+
+const GlobalStyle = createGlobalStyle`
     *, *:after, *:before {
         -webkit-tap-highlight-color: rgba(0,0,0,0);
     }
-`;
+`
 
 const hairline = (position = 'bottom', color = '#ddd')=>{
     let _style = [];
@@ -97,9 +103,11 @@ const hairline = (position = 'bottom', color = '#ddd')=>{
 }
 
 export {
-    hairline
+    hairline,
+    GlobalStyle
 }
 
 export default {
-    hairline
+    hairline,
+    GlobalStyle
 }

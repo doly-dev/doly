@@ -1,4 +1,4 @@
-import '../_style/common'
+import { GlobalStyle } from '../_style/common'
 import createTag from '../_utils/createTag'
 
 import React from 'react'
@@ -119,6 +119,7 @@ export class Flex extends React.Component{
 
         return(
             <Provider value={gutter || 0}>
+                <GlobalStyle />
                 <StyledFlex {...rest} />
             </Provider>
         )
