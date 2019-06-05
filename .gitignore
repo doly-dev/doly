@@ -8,4 +8,4 @@ dist
 build
 node_modules
 lib
-
+package-lock.json
