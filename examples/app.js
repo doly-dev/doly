@@ -21,20 +21,17 @@ class App extends React.Component {
             <div>
                 <GlobalStyle />
                 <div>a simple app examples preview.</div>
-
-                {
-                    // <FlexExample />
-                    // <ButtonExample />
-                    // <GridExample />
-                    // <IconExample />
-                    <SwitchExample />
-                    // <BadgeExample />
-                    // <Portal01Example />
-                    // <Portal02Example />
-                    // <Portal03Example />
-                    // <Portal04Example />
-                    // <TransitionExample />
-                }
+                <FlexExample />
+                <ButtonExample />
+                <GridExample />
+                <IconExample />
+                <SwitchExample />
+                <BadgeExample />
+                <Portal01Example />
+                <Portal02Example />
+                <Portal03Example />
+                <Portal04Example />
+                <TransitionExample />
                 
             </div>
         )

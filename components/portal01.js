@@ -30,7 +30,7 @@ export default class Dialog extends React.Component {
     renderPortal(props) {
         unstable_renderSubtreeIntoContainer(
             this, //代表当前组件
-            <div class="dialog">{props.children}</div>, // 塞进传送门的JSX
+            <div className="dialog">{props.children}</div>, // 塞进传送门的JSX
             this.node // 传送门另一端的DOM node
         );
     }
